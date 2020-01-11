@@ -4,8 +4,8 @@ module.exports = function(app) {
     app.get('/api/friends', function(req,res) {
         res.json(friends)
     })
+    app.post('/api/friends', function (req, res) {
+    res.json(friends[0]);
+    console.log(friends[0]);
+    })
 }
-
-app.post('/api/friends', function (req, res) {
-
-})
