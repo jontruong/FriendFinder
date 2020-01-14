@@ -11,6 +11,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="javascript" href="survey.js">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </head>
     <body>
      <h2> Survey Questions</h2>
@@ -60,9 +65,9 @@
         </select>
       </div>
       <div class="form-group col-md-4">
-        <label for="q3"><h3>Question 4</h3>
+        <label for="q4"><h3>Question 4</h3>
           <h4> People rarely upset you.</h4></label>
-        <select class="form-control" id="q3">
+        <select class="form-control" id="q4">
           <option value="1">1 (strongly disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -71,9 +76,9 @@
         </select>
       </div>
       <div class="form-group col-md-4">
-        <label for="q3"><h3>Question 5</h3>
+        <label for="q5"><h3>Question 5</h3>
           <h4> You like coffee more than tea.</h4></label>
-        <select class="form-control" id="q3">
+        <select class="form-control" id="q5">
           <option value="1">1 (strongly disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -82,9 +87,9 @@
         </select>
       </div>
       <div class="form-group col-md-4">
-        <label for="q3"><h3>Question 6</h3>
+        <label for="q6"><h3>Question 6</h3>
           <h4> You like to eat sushi.</h4></label>
-        <select class="form-control" id="q3">
+        <select class="form-control" id="q6">
           <option value="1">1 (strongly disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -93,9 +98,9 @@
         </select>
       </div>
       <div class="form-group col-md-4">
-        <label for="q3"><h3>Question 7</h3>
+        <label for="q7"><h3>Question 7</h3>
           <h4> You prefer sweet than savory.</h4></label>
-        <select class="form-control" id="q3">
+        <select class="form-control" id="q7">
           <option value="1">1 (strongly disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -104,9 +109,9 @@
         </select>
       </div>
       <div class="form-group col-md-4">
-        <label for="q3"><h3>Question 8</h3>
+        <label for="q8"><h3>Question 8</h3>
           <h4> Jurassic Park is an awesome movie.</h4></label>
-        <select class="form-control" id="q3">
+        <select class="form-control" id="q8">
           <option value="1">1 (strongly disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -115,9 +120,9 @@
         </select>
       </div>
       <div class="form-group col-md-4">
-        <label for="q3"><h3>Question 9</h3>
+        <label for="q9"><h3>Question 9</h3>
           <h4> Pineapple should be on a pizza.</h4></label>
-        <select class="form-control" id="q3">
+        <select class="form-control" id="q9">
           <option value="1">1 (strongly disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -126,9 +131,9 @@
         </select>
       </div>
       <div class="form-group col-md-4">
-        <label for="q3"><h3>Question 10</h3>
+        <label for="q10"><h3>Question 10</h3>
           <h4> When life gives you lemons you make lemonade.</h4></label>
-        <select class="form-control" id="q3">
+        <select class="form-control" id="q10">
           <option value="1">1 (strongly disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -136,51 +141,60 @@
           <option value="5">5 (strongly agree)</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-primary btn-md" id="submit"><i class="fa fa-check-circle" aria-hidden="true">
+      <button type="submit" class="btn btn-primary btn-md" id="submit" data-target="results-modal" data-toggle="modal"><i class="fa fa-check-circle" aria-hidden="true">
       </i>Submit</button>
      </form>
 
+     <div class="modal fade" tabindex="-1" role="dialog" id="results-modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><strong>Best Match</strong></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+         <h2 class="match-name" id= "best-name"></h2>
+         <img src="https://krausefx.com/assets/posts/profilePictures/FelixKrause2014.jpg" id= "best-photo" style = "width:350px; height:400px">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+           
+          </div>
+        </div>
+      </div>
+    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery.js"></script>
+ 
   <script type ="text/javascript">
+
   $("#submit").on("click", function(){
     event.preventDefault();
-    var scores = [];
-    for (let i = 1; i <= 3; i++) {
-      var qscore = Number($("#q" + i).val())
-      scores.push(qscore);
-    }
-    var friend = {
-      name:$("#name").val().trim(),
-      photo:$("#photo").val().trim(),
-      scores
-  };
-  $.post("/api/friends", friend, function(response){
-    console.log(response);
-  })
+
+    // Create an object to put user's data
+    var userData = {
+        name: $("#name").val(),
+        photo: $("#photo").val(),
+        scores:[
+            $("#q1").val(),
+            $("#q2").val(),
+            $("#q3").val(),
+            $("#q4").val(),
+            $("#q5").val(),
+            $("#q6").val(),
+            $("#q7").val(),
+            $("#q8").val(),
+            $("#q9").val(),
+            $("#q10").val(),
+        ]
+    };
+  $.post("/api/friends", userData, function(response){
+    $("#best-name").text(response.name);
+    $("#best-photo").attr("src", response.photo);
+    $("#results-modal").modal("toggle");
+  });
+  console.log(userData);
   })
 
   
